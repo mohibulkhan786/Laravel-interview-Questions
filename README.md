@@ -1,6 +1,5 @@
-# 100-laravel-interview-questions
+# laravel-interview-questions
 
-# Lavavel-100-objective-based-questions
 
 **1. What is the default database system used in Laravel?**
 ```php
