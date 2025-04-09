@@ -3,6 +3,7 @@
 
 ````
 Laravel Framework 
+------------------
 
 Usage:
   command [options] [arguments]
@@ -10,16 +11,17 @@ Usage:
 Options:
   -h, --help            Display help for the given command. When no command is given display help for the 
                         list command
-      --silent          Do not output any message
-  -q, --quiet           Only errors are displayed. All other output is suppresse
-d
-  -V, --version         Display this application version --ansi|--no-ansi  Force (or disable --no-ansi) ANSI output
+  --silent              Do not output any message
+  -q, --quiet           Only errors are displayed. All other output is suppressed
+  -V, --version         Display this application version --ansi|--no-ansi  Force (or disable --no-ansi) ANSI 
+                        output
   -n, --no-interaction  Do not ask any interactive question
-      --env[=ENV]       The environment the command should run under
-  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output,
- 2 for more verbose output and 3 for debug
+  --env[=ENV]           The environment the command should run under
+  -v|vv|vvv,--verbose   Increase the verbosity of messages: 1 for normal output, 2 for more verbose
+                        output and 3 for debug
 
 Available commands:
+-------------------
   about                     Display basic information about your application
   clear-compiled            Remove the compiled class file
   completion                Dump the shell completion script
@@ -31,54 +33,66 @@ Available commands:
   inspire                   Display an inspiring quote
   list                      List commands
   migrate                   Run the database migrations
-  optimize                  Cache framework bootstrap, configuration, and metada
-ta to increase performance
+  optimize                  Cache framework bootstrap, configuration, and metadata to increase performance
   pail                      Tails the application logs.
   serve                     Serve the application on the PHP development server
   test                      Run the application tests
   tinker                    Interact with your application
-  up                        Bring the application out of maintenance mode
- auth
-  auth:clear-resets         Flush expired password reset tokens
+  up                        Bring the application out of maintenance mode 
+  -------                   
+ Auth
+  -------
+  auth:clear-resets         Flush expired password reset tokens 
+  -------
  cache
+  -------
   cache:clear               Flush the application cache
   cache:forget              Remove an item from the cache
-  cache:prune-stale-tags    Prune stale cache tags from the cache (Redis only)
- channel
-  channel:list              List all registered private broadcast channels
+  cache:prune-stale-tags    Prune stale cache tags from the cache (Redis only) 
+  -------
+  channel
+  -------
+  channel:list              List all registered private broadcast channels 
+  -------
  config
+  -------
   config:cache              Create a cache file for faster configuration loading
   config:clear              Remove the configuration cache file
   config:publish            Publish configuration files to your application
   config:show               Display all of the values for a given configuration
-file or key
+  -------
  db
-  db:monitor                Monitor the number of connections on the specified d
-atabase
+  -------
+  db:monitor                Monitor the number of connections on the specified database
   db:seed                   Seed the database with records
   db:show                   Display information about the given database
   db:table                  Display information about the given database table
   db:wipe                   Drop all tables, views, and types
+  -------
  env
+  -------
   env:decrypt               Decrypt an environment file
   env:encrypt               Encrypt an environment file
+  -------
  event
+  -------
   event:cache               Discover and cache the application's events and list
-eners
   event:clear               Clear all cached events and listeners
   event:list                List the application's events and listeners
+  -------
  install
-  install:api               Create an API routes file and install Laravel Sanctu
-m or Laravel Passport
+  -------
+  install:api               Create an API routes file and install Laravel Sanctum or Laravel Passport
   install:broadcasting      Create a broadcasting channel routes file
- key
-  key:generate              Set the application key
- lang
-  lang:publish              Publish all language files that are available for cu
-stomization
+  -------
+key
+  -------
+  key:generate              Set the application key lang
+  lang:publish              Publish all language files that are available for customization
+  -------
  make
-  make:cache-table          [cache:table] Create a migration for the cache datab
-ase table
+  -------
+  make:cache-table          [cache:table] Create a migration for the cache database table
   make:cast                 Create a new custom Eloquent cast class
   make:channel              Create a new channel class
   make:class                Create a new class
@@ -98,42 +112,49 @@ ase table
   make:migration            Create a new migration file
   make:model                Create a new Eloquent model class
   make:notification         Create a new notification class
-  make:notifications-table  [notifications:table] Create a migration for the not
-ifications table
+  make:notifications-table  [notifications:table] Create a migration for the notifications table
   make:observer             Create a new observer class
   make:policy               Create a new policy class
   make:provider             Create a new service provider class
-  make:queue-batches-table  [queue:batches-table] Create a migration for the bat
-ches database table
-  make:queue-failed-table   [queue:failed-table] Create a migration for the fail
-ed queue jobs database table
-  make:queue-table          [queue:table] Create a migration for the queue jobs
-database table
+  make:queue-batches-table  [queue:batches-table] Create a migration for the batches database 
+                            table
+  make:queue-failed-table   [queue:failed-table] Create a migration for the failed queue jobs  
+                            database table
+  make:queue-table          [queue:table] Create a migration for the queue jobs database table
   make:request              Create a new form request class
   make:resource             Create a new resource
   make:rule                 Create a new validation rule
   make:scope                Create a new scope class
   make:seeder               Create a new seeder class
-  make:session-table        [session:table] Create a migration for the session d
-atabase table
+  make:session-table        [session:table] Create a migration for the session database table
   make:test                 Create a new test class
   make:trait                Create a new trait
-  make:view                 Create a new view
+  make:view                 Create a new view 
+  -------
  migrate
+  -------
   migrate:fresh             Drop all tables and re-run all migrations
   migrate:install           Create the migration repository
   migrate:refresh           Reset and re-run all migrations
   migrate:reset             Rollback all database migrations
   migrate:rollback          Rollback the last database migration
   migrate:status            Show the status of each migration
+  -------
  model
+  -------
   model:prune               Prune models that are no longer needed
-  model:show                Show information about an Eloquent model
+  model:show                Show information about an Eloquent model 
+  -------
  optimize
-  optimize:clear            Remove the cached bootstrap files
+  -------
+  optimize:clear            Remove the cached bootstrap files 
+  -------
  package
-  package:discover          Rebuild the cached package manifest
+  -------
+  package:discover          Rebuild the cached package manifest 
+  -------
  queue
+  -------
   queue:clear               Delete all of the jobs from the specified queue
   queue:failed              List all of the failed queue jobs
   queue:flush               Flush all of the failed queue jobs
@@ -146,37 +167,49 @@ atabase table
   queue:retry               Retry a failed queue job
   queue:retry-batch         Retry the failed jobs for a batch
   queue:work                Start processing jobs on the queue as a daemon
+  -------
  route
-  route:cache               Create a route cache file for faster route registrat
-ion
+  -------
+  route:cache               Create a route cache file for faster route registration
   route:clear               Remove the route cache file
-  route:list                List all registered routes
+  route:list                List all registered routes 
+  -------
  sail
+  -------
   sail:add                  Add a service to an existing Sail installation
   sail:install              Install Laravel Sail's default Docker Compose file
-  sail:publish              Publish the Laravel Sail Docker files
+  sail:publish              Publish the Laravel Sail Docker files 
+  -------
  schedule
+  -------
   schedule:clear-cache      Delete the cached mutex files created by scheduler
   schedule:interrupt        Interrupt the current schedule run
   schedule:list             List all scheduled tasks
   schedule:run              Run the scheduled commands
   schedule:test             Run a scheduled command
   schedule:work             Start the schedule worker
+  --------
  schema
+  --------
   schema:dump               Dump the given database schema
+  --------
  storage
-  storage:link              Create the symbolic links configured for the applica
-tion
-  storage:unlink            Delete existing symbolic links configured for the ap
-plication
+  --------
+  storage:link              Create the symbolic links configured for the application
+  storage:unlink            Delete existing symbolic links configured for the application
+  --------
  stub
-  stub:publish              Publish all stubs that are available for customizati
-on
+  --------
+  stub:publish              Publish all stubs that are available for customization
+  --------
  vendor
+  --------
   vendor:publish            Publish any publishable assets from vendor packages
+  --------
  view
+  --------
   view:cache                Compile all of the application's Blade templates
   view:clear                Clear all compiled view files
-  </b>
+  
 ````
 
