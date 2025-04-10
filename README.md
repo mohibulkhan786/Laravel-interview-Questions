@@ -9,8 +9,8 @@ Route::get('/', function () {
 });
 
 ````
-### Q2---- How to install Laravel?
-#### Ans-- A web framework provides a structure and starting point for creating your application, allowing you to focus on creating something amazing Web Applications.
+### Q2- How to install Laravel?
+#### Ans- A web framework provides a structure and starting point for creating your application, allowing you to focus on creating something amazing Web Applications.
 - If you already have PHP and Composer installed, you may install the Laravel installer via Composer:
 
 ````
@@ -32,7 +32,7 @@ php artisan migrate
 php artisan serve
 ````
 
-### Q3--- What is Composer and how is it used in Laravel?
+### Q3- What is Composer and how is it used in Laravel?
 #### Ans-- Composer is a dependency manager for PHP that Laravel uses to manage its dependencies. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
 
 ````
@@ -40,7 +40,7 @@ composer create-project --prefer-dist laravel/laravel blog
 ````
 
 
-### Q3 - What are the key features of Laravel?
+### Q4 - What are the key features of Laravel?
 #### Ans - MVC Architecture, Eloquent ORM, Middleware, Authentication, Blade Templating Engine, Artisan CLI, Database Migrations & Seeders, Routing, Authentication & Authorization etc .
 - Explain 
 1. **MVC Architecture**
@@ -71,13 +71,11 @@ Follows the Model-View-Controller pattern, ensuring separation of logic, UI, and
 
 8. **Authentication & Authorization**
 - Built-in scaffolding for user registration, login, and password reset.
-
-Policies & Gates for fine-grained access control.
+- Policies & Gates for fine-grained access control.
 
 9. **API Support (Passport & Sanctum)**
 - Passport: Full OAuth2 server implementation for API authentication.
-
-Sanctum: Lightweight token-based authentication for SPAs and mobile apps.
+- Sanctum: Lightweight token-based authentication for SPAs and mobile apps.
 
 10. **Queue System**
 - Defer time-consuming tasks (e.g., sending emails) to background queues for better performance.
@@ -122,8 +120,7 @@ Route::get('/dashboard', function () {
 ````
 
 ### Q4 - What is a Service Provider?
-#### Ans - A central place where Laravel bootstraps services.
-- A Service Provider is the central place where Laravel binds classes into the service container. They are responsible for bootstrapping all the core services, components such as database connections, queue listeners, event handlers, middleware, routes etc.
+#### Ans - A Service Provider is the central place where Laravel binds classes into the service container. They are responsible for bootstrapping all the core services, components such as database connections, queue listeners, event handlers, middleware, routes etc.
 - Laravel loads all service providers listed in the <b>config/app.php</b> file in the providers array during the application bootstrapping process.
 
 **Why Use a Service Provider?**
