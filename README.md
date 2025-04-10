@@ -33,7 +33,7 @@ php artisan serve
 ````
 
 ### Q3--- What is Composer and how is it used in Laravel?
-### Ans-- Composer is a dependency manager for PHP that Laravel uses to manage its dependencies. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
+#### Ans-- Composer is a dependency manager for PHP that Laravel uses to manage its dependencies. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
 
 ````
 composer create-project --prefer-dist laravel/laravel blog
@@ -41,8 +41,80 @@ composer create-project --prefer-dist laravel/laravel blog
 
 
 ### Q3 - What are the key features of Laravel?
-#### Ans - Routing, Eloquent ORM, Middleware, Authentication, Blade, Artisan CLI.
-- Explain
+#### Ans - MVC Architecture, Eloquent ORM, Middleware, Authentication, Blade Templating Engine, Artisan CLI, Database Migrations & Seeders, Routing, Authentication & Authorization etc .
+- Explain 
+1. **MVC Architecture**
+Follows the Model-View-Controller pattern, ensuring separation of logic, UI, and data layers.
+
+2. **Eloquent ORM**
+- A powerful ActiveRecord implementation for database interactions.
+- Allows smooth database operations using PHP syntax instead of SQL.
+
+3. **Blade Templating Engine**
+- Lightweight yet powerful templating engine with template inheritance and reusable components.
+- Supports control structures (@if, @foreach, etc.) directly in templates.
+
+4. **Artisan CLI**
+- Built-in command-line tool for automating repetitive tasks (e.g., migrations, testing, key generation).
+- Allows developers to create custom commands.
+
+5. **Database Migrations & Seeders**
+- Version control for databases via migration files.
+- Seeders help populate databases with test data.
+
+6. Robust Routing System
+- Flexible routing with support for RESTful controllers.
+- Route caching for improved performance.
+
+7. **Middleware**
+- Filters HTTP requests entering the application (e.g., authentication, CORS).
+
+8. **Authentication & Authorization**
+- Built-in scaffolding for user registration, login, and password reset.
+
+Policies & Gates for fine-grained access control.
+
+9. **API Support (Passport & Sanctum)**
+- Passport: Full OAuth2 server implementation for API authentication.
+
+Sanctum: Lightweight token-based authentication for SPAs and mobile apps.
+
+10. **Queue System**
+- Defer time-consuming tasks (e.g., sending emails) to background queues for better performance.
+
+11. **Task Scheduling**
+- Define scheduled tasks (e.g., cron jobs) within Laravel itself.
+
+12. **Testing (PHPUnit & Pest Integration)**
+- Built-in testing support with PHPUnit.
+- Pest (a modern testing framework) is also widely used.
+
+13. **Laravel Echo & Broadcasting**
+- Real-time event broadcasting using WebSockets (via Pusher, Laravel Websockets, or Ably).
+
+14. **File Storage Abstraction**
+- Unified API for working with local storage, Amazon S3, and other cloud services.
+
+15. **Dependency Injection & Service Container**
+- Manages class dependencies efficiently, promoting loose coupling.
+
+16. **Laravel Mix (Frontend Build Tool)**
+- Simplifies Webpack configuration for compiling CSS & JS (Sass, Vue, React, etc.).
+
+17. **Laravel Forge & Envoyer (Deployment Tools)**
+- Forge: Server management & deployment.
+- Envoyer: Zero-downtime PHP deployments.
+
+18. **Laravel Horizon (Queue Monitoring)**
+- Dashboard for monitoring Redis queues.
+
+19. **Laravel Nova (Admin Panel)**
+- A beautifully designed administration panel for managing app data.
+
+20. **Community & Ecosystem**
+- Large community, extensive packages (Laravel Livewire, Jetstream, Breeze, etc.), and Laravel Vapor (serverless deployment).
+
+
 ````
 Route::get('/dashboard', function () {
     // Dashboard logic
