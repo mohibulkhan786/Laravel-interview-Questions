@@ -384,25 +384,16 @@ namespace App\Services;
 class MathService
 {
     public function add($a, $b)
-    {
-        return $a + $b;
-    }
-
+    {   return $a + $b; }
 
     public function multiply($a, $b)
-    {
-        return $a * $b;
-    }
+    {   return $a * $b; }
 
     public function percentage($total, $value)
-    {
-        return $total == 0 ? 0 : ($value / $total) * 100;
-    }
+    {   return $total == 0 ? 0 : ($value / $total) * 100; }
 
     public function squareRoot($number)
-    {
-        return sqrt($number);
-    }
+    {   return sqrt($number); }
 }
 
 ````
@@ -428,21 +419,17 @@ class MathServiceProvider extends ServiceProvider
             return new MathService();
         });
     }
-
     public function boot(): void
     {
         //
     }
 }
-
-
 ````
 - Register the Provider in Laravel In <b>bootstrap/providers.php</b>, add the provider to the providers array
 ````
-   'providers' => [
-    // ...
-    App\Providers\MathServiceProvider::class,
-],
+  <?php
+
+return [  App\Providers\MathServiceProvider::class, ];
 
 ````
 - Use the Service In a controller or anywhere:
@@ -483,7 +470,133 @@ Route::get('/math', [MathController::class, 'index']);
 ````
 
 ### Q6 - What is Facards in Laravel?
-#### Ans -  Facades provide a "static" interface to classes that are available in the application's service container.
+#### Ans -  Facades is a design pattern that provides a "static" interface to classes that are available in the application's service container.
+
+- **Here are some of the most commonly used facades:**
+- DB	      Database access
+- Cache	      Caching
+- Log         Logging
+- Config  	  Configuration values
+- Route	      Routing
+- Validator	  Validation
+- Auth	      Authentication
+- Session	  Session handling
+- View	      View rendering
+- Storage	  File storage
+- Event	      Event handling
+- Queue	      Job queue
+
+1. DB (Database Access)
+````
+<?php
+use Illuminate\Support\Facades\DB;
+
+$users = DB::table('users')->where('active', 1)->get();
+````
+2. Cache (Caching)
+````
+<?php
+use Illuminate\Support\Facades\Cache;
+
+// Store in cache for 10 minutes
+Cache::put('name', 'John', now()->addMinutes(10));
+
+// Retrieve from cache
+$name = Cache::get('name');
+
+// Remove from cache
+Cache::forget('name');
+
+````
+
+3. Log (Logging)
+````
+<?php
+use Illuminate\Support\Facades\Log;
+
+Log::info('This is an info message');
+Log::warning('This is a warning');
+Log::error('Something went wrong');
+````
+
+4. Config (Configuration Values)
+````
+<?php
+use Illuminate\Support\Facades\Config;
+
+$appName = Config::get('app.name');
+
+// Set a config value dynamically (not recommended for production)
+Config::set('app.debug', true);
+````
+
+5. Route (Routing)
+````
+<?php
+use Illuminate\Support\Facades\Route;
+
+$allRoutes = Route::getRoutes();
+````
+
+6. Validator (Validation)
+````
+<?php
+use Illuminate\Support\Facades\Validator;
+
+$data = ['email' => 'invalid-email'];
+
+$validator = Validator::make($data, [
+    'email' => 'required|email'
+]);
+if ($validator->fails()) {
+    return $validator->errors();
+}
+````
+
+7. Auth (Authentication)
+````
+<?php
+use Illuminate\Support\Facades\Auth;
+
+// Get current logged in user
+$user = Auth::user();
+
+// Check if user is authenticated
+if (Auth::check()) {
+    echo "User is logged in";
+}
+````
+
+
+8. Session (Session Handling)
+````
+<?php
+use Illuminate\Support\Facades\Session;
+
+// Store data
+Session::put('key', 'value');
+// Get data
+$value = Session::get('key');
+// Remove data
+Session::forget('key');
+
+````
+
+
+9. Storage (File Storage)
+````
+<?php
+use Illuminate\Support\Facades\Storage;
+
+// Save file
+Storage::put('example.txt', 'File contents');
+// Read file
+$content = Storage::get('example.txt');
+// Delete file
+Storage::delete('example.txt');
+
+````
+
 
 
 ### Q - What is Eloquent in Laravel?
