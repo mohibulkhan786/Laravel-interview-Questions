@@ -113,7 +113,7 @@ Follows the Model-View-Controller pattern, ensuring separation of logic, UI, and
 20. **Community & Ecosystem**
 - Large community, extensive packages (Laravel Livewire, Jetstream, Breeze, etc.), and Laravel Vapor (serverless deployment).
 
-###  Q4 - What is Route?
+###  Q5 - What is Route?
 #### Ans - A route is how you define URL endpoints that respond to a user’s browser request. It’s the entry point to your application logic.
 ````
 use Illuminate\Support\Facades\Route;
@@ -123,7 +123,7 @@ Route::get('/hello', function () {
 });
 ````
 
-### 5 - What are Middleware?
+### Q6 - What are Middleware?
 #### Ans -  Middleware filters HTTP requests enter your application. They are used to inspect, modify, or reject requests based on certain logic.
 - Explain
 ````
@@ -134,7 +134,7 @@ if ($request->age < 18) {
     return redirect('no-access');
 }
 ````
-### 6 - What is CSRF protection?
+### Q7 - What is CSRF protection?
 #### Ans -  Prevents cross-site request forgery.
 - Explain
 ````
@@ -144,7 +144,7 @@ if ($request->age < 18) {
 </form>
 ````
 
-### 7 - How to validate a request?
+### Q8 - How to validate a request?
 #### Ans - Using $request->validate() or a custom request class.
 - Explain
 ````
@@ -154,7 +154,7 @@ $request->validate([
 ]);
 ````
 
-### 8 - What is php artisan?
+### Q9 - What is php artisan?
 #### Ans - CLI tool for Laravel.
 - Explain
 ````
@@ -162,7 +162,7 @@ php artisan make:model Post -mcr
 ````
 
 
-### 9 - What is route model binding?
+### Q10 - What is route model binding?
 #### Ans -Automatically injects a model instance into routes.
 - Explain
 ````
@@ -171,7 +171,7 @@ Route::get('/user/{user}', function (User $user) {
 });
 ````
 
-### 10 - Difference between web.php and api.php?
+### Q11 - Difference between web.php and api.php?
 #### Ans -web.php: session & CSRF, api.php: stateless
 - Explain
 ````
@@ -180,7 +180,7 @@ Route::get('/profile', function () {
 });
 ````
 
-### Q11 - What is Blade in laravel?
+### Q12 - What is Blade in laravel?
 #### Ans -  Templating engine.
 - Example:
 ````
@@ -189,7 +189,7 @@ Route::get('/profile', function () {
 @endif
 ````
 
-### Q12 - What are migrations?
+### Q13 - What are migrations?
 #### Ans - Version control for database schema.
 - Example:
 ````
@@ -199,7 +199,7 @@ Schema::create('posts', function (Blueprint $table) {
     $table->timestamps();
 });
 ````
-### Q13 - What is seeding?
+### Q14 - What is seeding?
 #### Ans - Seeders is way to Inserting test data.
 - Example: database/seeders/DatabaseSeeder.php
 ````
@@ -211,7 +211,7 @@ DB::table('users')->insert([
 ]);
 php artisan db:seed --class=UsersTableSeeder
 ````
-### Q14 - What are factories?
+### Q15 - What are factories?
 #### Ans - Generate dummy data.
 - Example: database/factories/UserFactory.php
 ````
@@ -228,7 +228,7 @@ return [
 User::factory()->count(10)->create();
 ````
 
-### Q15 -  What is the service container?
+### Q16 -  What is the service container?
 #### Ans - Dependency injection container.
 
 ````
@@ -237,7 +237,7 @@ App::bind('HelpService', function () {
 });
 
 ````
-### Q16 -  What is dependency injection?
+### Q17 -  What is dependency injection?
 #### Ans -  Laravel automatically injects class dependencies.
 
 ````
@@ -246,7 +246,7 @@ public function __construct(UserRepository $repo) {
 }
 
 ````
-### Q17 -  What is Laravel Sanctum?
+### Q18 -  What is Laravel Sanctum?
 #### Ans -  Token-based API authentication system.
 
 ````
@@ -254,14 +254,14 @@ composer require laravel/sanctum
 $user->createToken('API Token')->plainTextToken;
 ````
 
-### Q18 -  What is Laravel Passport?
+### Q19 -  What is Laravel Passport?
 #### Ans - Full OAuth2 implementation.
 
 ````
 composer require laravel/passport
 php artisan passport:install
 ````
-### Q19 - Difference between hasOne and belongsTo?
+### Q20 - Difference between hasOne and belongsTo?
 #### Ans - hasOne: parent → child  belongsTo: child → parent
 
 ````
@@ -276,7 +276,7 @@ public function user() {
 
 ````
 
-### Q19 - Difference between hasOne and belongsTo?
+### Q21 - Difference between hasOne and belongsTo?
 #### Ans - hasOne: parent → child  belongsTo: child → parent
 
 ````
@@ -291,7 +291,7 @@ public function user() {
 
 ````
 
-### Q20 - What is soft delete?
+### Q22 - What is soft delete?
 #### Ans - Marks record as deleted without removing it.
 
 ````
@@ -302,27 +302,27 @@ class Post extends Model {
 }
 
 ````
-### Q21 - What is Eloquent in Laravel?
+### Q23 - What is Eloquent in Laravel?
 #### Ans - It is Laravel’s ORM that interacts with the database using models.
 - Explain
 ````
 $users = App\Models\User::where('status', 'active')->get();
 ````
-### Q22 - Difference between get() and first()?
+### Q24 - Difference between get() and first()?
 #### Ans - get() returns all matching results and first() returns only the first match.
 - Explain
 ````
 User::where('email', 'test@example.com')->get();    // Collection
 User::where('email', 'test@example.com')->first();  // Single Model
 ````
-### Q23 - What is the difference between public_path() and base_path()?
+### Q25 - What is the difference between public_path() and base_path()?
 #### Ans - public_path(): path to /public directory. base_path(): root project path.
 - Explain
 ````
 $file = public_path('images/logo.png');
 $root = base_path('config/app.php');
 ````
-### Q24 - What are accessors and mutators in Laravel?
+### Q26 - What are accessors and mutators in Laravel?
 #### Ans - **Accessor:** Format data when getting. **Mutator:** Format data when setting.
 - Explain
 ````
@@ -336,25 +336,25 @@ public function setNameAttribute($value) {
     $this->attributes['name'] = strtolower($value);
 }
 ````
-### Q25 - How can you use pagination in Laravel?
-#### Ans - Use paginate() method on Eloquent query.
-- Explain
-````
-$users = User::paginate(10);
-````
-### Q26 - How can you use pagination in Laravel?
-#### Ans - Use paginate() method on Eloquent query.
-- Explain
-````
-$users = User::paginate(10);
-````
 ### Q27 - How can you use pagination in Laravel?
 #### Ans - Use paginate() method on Eloquent query.
 - Explain
 ````
 $users = User::paginate(10);
 ````
-### Q28 - How to create a custom helper function in Laravel?
+### Q28 - How can you use pagination in Laravel?
+#### Ans - Use paginate() method on Eloquent query.
+- Explain
+````
+$users = User::paginate(10);
+````
+### Q29 - How can you use pagination in Laravel?
+#### Ans - Use paginate() method on Eloquent query.
+- Explain
+````
+$users = User::paginate(10);
+````
+### Q30 - How to create a custom helper function in Laravel?
 #### Ans - Create app/helpers.php. Add your function. Autoload in composer.json.
 - Explain
 ````
@@ -371,26 +371,26 @@ function greeting() {
 ````
 composer dump-autoload
 ````
-### Q29 - What is the use of with() in Eloquent?
+### Q32 - What is the use of with() in Eloquent?
 #### Ans - Eager loads related models to reduce DB queries.
 - Explain
 ````
 $posts = Post::with('comments')->get();
 ````
-### Q30 - What is a migration rollback?
+### Q32 - What is a migration rollback?
 #### Ans - Reverts the last batch of migrations.
 - Explain
 ````
 php artisan migrate:rollback
 ````
-### Q31 - How do you use Laravel events?
+### Q33 - How do you use Laravel events?
 #### Ans - Events help trigger custom logic when something happens.
 - Explain
 ````
 php artisan make:event UserRegistered
 php artisan make:listener SendWelcomeEmail
 ````
-### Q32 - What is the difference between Auth::user() and auth()->user()?
+### Q34 - What is the difference between Auth::user() and auth()->user()?
 #### Ans - Both return the currently authenticated user. They're interchangeable.
 - Explain
 ````
@@ -398,7 +398,7 @@ $user = Auth::user();
 // OR
 $user = auth()->user();
 ````
-### Q33 - What is a Laravel policy?
+### Q35 - What is a Laravel policy?
 #### Ans - Policies organize authorization logic around models.
 - Explain
 ````
@@ -408,7 +408,7 @@ php artisan make:policy PostPolicy --model=Post
 ````
 $this->authorize('update', $post);
 ````
-### Q34- How to protect routes using middleware?
+### Q36- How to protect routes using middleware?
 #### Ans - Protect middleware using Auth.
 - Explain
 ````
@@ -418,34 +418,34 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 ````
-### Q35- What is a job in Laravel?
+### Q37- What is a job in Laravel?
 #### Ans - Jobs handle background tasks like sending emails or processing images.
 - Explain
 ````
 php artisan make:job ProcessOrder
 ````
 
-### Q36- What is a job in Laravel?
+### Q38- What is a job in Laravel?
 #### Ans - Jobs handle background tasks like sending emails or processing images.
 - Explain
 ````
 php artisan make:job ProcessOrder
 ````
-### Q37- How do queues work in Laravel?
+### Q39- How do queues work in Laravel?
 #### Ans - Queues defer time-consuming tasks to improve performance.
 - Explain
 ````
 dispatch(new ProcessOrder($order));
 ````
 
-### Q38- What is Laravel Mix?
+### Q40- What is Laravel Mix?
 #### Ans - A tool to compile and minify frontend assets.
 - Example webpack.mix.js
 ````
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
 ````
-### Q39- What is a singleton in Laravel service container?
+### Q41- What is a singleton in Laravel service container?
 #### Ans - Ensures only one instance of a class is ever created.
 - Explain
 ````
@@ -453,7 +453,7 @@ $this->app->singleton(MyService::class, function ($app) {
     return new MyService();
 });
 ````
-### Q40- What are route groups in Laravel?
+### Q42- What are route groups in Laravel?
 #### Ans - Used to apply shared attributes (middleware, namespace, prefix) to routes.
 - Explain
 ````
@@ -461,7 +461,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', 'AdminController@index');
 });
 ````
-### Q41- How to send email in Laravel?
+### Q43- How to send email in Laravel?
 #### Ans - To send an email in Laravel, you can use the built-in Mail facade. Laravel makes it very easy to send emails using various drivers like SMTP, Mailgun, Postmark, etc.
 - Explain
 ````
@@ -484,14 +484,14 @@ public function sendWelcomeEmail()
 
 });
 ````
-### Q42- What is API Resource in Laravel?
+### Q44- What is API Resource in Laravel?
 #### Ans - Transforms models into JSON easily for APIs.
 - Explain
 ````
 php artisan make:resource UserResource
 return new UserResource($user);
 ````
-### Q43- How to return JSON response in Laravel?
+### Q45- How to return JSON response in Laravel?
 #### Ans - Return JSON response in Laravel
 - Explain
 ````
@@ -500,14 +500,14 @@ return response()->json([
     'data' => $user
 ]);
 ````
-### Q44- What is the difference between pluck() and select()?
+### Q46- What is the difference between pluck() and select()?
 #### Ans - pluck(): get single column values. select(): get full result set with selected columns.
 - Explain
 ````
 User::pluck('email');
 User::select('id', 'email')->get();
 ````
-### Q45- What is the difference between update() and save() in Eloquent?
+### Q47- What is the difference between update() and save() in Eloquent?
 #### Ans - update(): mass updates multiple attributes. save(): updates the model instance.
 - Explain
 ````
