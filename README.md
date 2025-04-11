@@ -113,18 +113,18 @@ Follows the Model-View-Controller pattern, ensuring separation of logic, UI, and
 20. **Community & Ecosystem**
 - Large community, extensive packages (Laravel Livewire, Jetstream, Breeze, etc.), and Laravel Vapor (serverless deployment).
 
-### Q4 - What is a Service Container?
+### Q5 - What is a Service Container?
 #### Ans -  The Laravel service container is a powerful tool for managing class dependencies and performing dependency injection. Dependency injection is a fancy phrase that essentially means this: class dependencies are "injected" into the class via the constructor.
 - A centralized system for managing class dependencies.
 - Automatically resolves and injects dependencies when needed
 - Laravel automatically injects dependencies into your controllers, event listeners, middleware, jobs, etc., using the container.
 **Core Methods of the Service Container**
-- Method	     Description
-- bind()	     Binds a class or interface into the container.
-- singleton()	 Binds a class as a singleton (only one instance used).
-- instance()	 Binds an existing object instance.
-- make()	     Resolves a class from the container.
-- has()	         Checks if a binding exists.
+- Method------Description
+- bind()------Binds a class or interface into the container.
+- singleton()-Binds a class as a singleton (only one instance used).
+- instance()--Binds an existing object instance.
+- make()------Resolves a class from the container.
+- has()-------Checks if a binding exists.
 
 - Service Container Used in Laravel **Controllers, Middleware, Service Providers, Jobs, Events, Custom Services** 
 - Laravel resolves dependencies using constructor injection or method injection through the service container.
@@ -288,6 +288,89 @@ Route::get('/notifier', function (NotificationService $notifier) {
 - Configure packages
 - Load custom helpers, routes, etc.
 - Create the Service Provider
+- ✅ Explain Step by step Example 1
+
+````
+mkdir -p app/Services && touch app/Services/GreetingService.php
+````
+- Add the code CustomMessage file.
+````
+<?php
+namespace App\Services;
+
+class GreetingService {
+	
+  public function get_service_provider_message($name)
+    {
+        return "Welcome to Laravel, $name!";
+    }
+}
+````
+- Create a Custom Service Provider Run this artisan command:
+````
+php artisan make:provider GreetingServiceProvider
+````
+- Explaination -> This creates: app/Providers/GreetingServiceProvider.php
+- Register the Service, Edit GreetingServiceProvider.php like this:
+````
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use App\Services\GreetingService;
+
+class GreetingServiceProvider extends ServiceProvider
+{
+    public function register()
+    {
+        // Register the singleton
+           $this->app->singleton(GreetingService::class, function () {
+           return new GreetingService();
+           });      
+    }
+
+    public function boot()
+    {
+        // You can perform additional bootstrapping here
+    }
+}
+
+````
+- Register the Provider in Laravel In <b>bootstrap/providers.php</b>, add the provider to the providers array
+````
+   'providers' => [
+    // ...
+    App\Providers\GreetingServiceProvider::class,
+],
+
+````
+- Use the Service In a controller or anywhere:
+````
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Services\GreetingService;
+
+class GreetingServiceController extends Controller
+{
+    public function index(GreetingService $greeting)
+    {
+        $message = $greetingService->get_service_provider_message('Armkhan');
+        return response()->json(['message' => $message]);
+    }
+}
+````
+
+- Create route in routes/web.php
+````
+use App\Http\Controllers\GreetingServiceController;
+Route::get('/greet-service', [GreetingServiceController::class, 'index']);
+````
+
+- ✅ Explain Step by step Example 2 Go to app/services folder if not available then create
 
 ````
 mkdir -p app/Services && touch app/Services/GreetingService.php
@@ -298,71 +381,118 @@ mkdir -p app/Services && touch app/Services/GreetingService.php
 
 namespace App\Services;
 
-class GreetingService
+class MathService
 {
-    public function show($message)
+    public function add($a, $b)
     {
-        file_put_contents(storage_path('logs/custom_message.log'), $message . PHP_EOL, FILE_APPEND);
+        return $a + $b;
+    }
+
+
+    public function multiply($a, $b)
+    {
+        return $a * $b;
+    }
+
+    public function percentage($total, $value)
+    {
+        return $total == 0 ? 0 : ($value / $total) * 100;
+    }
+
+    public function squareRoot($number)
+    {
+        return sqrt($number);
     }
 }
-````
-- This class has a show() method that writes a message to a custom log file.
-- Create the Service Provider in artisan cmd:
 
 ````
-php artisan make:provider CustomMessageServiceProvider
+- Create a Custom Service Provider Run this artisan command:
 ````
-- Explaination -> This creates: app/Providers/CustomMessageServiceProvider.php
-- Register the Service, Edit CustomMessageServiceProvider.php like this:
+ php artisan make:provider MathServiceProvider
 ````
+- Explaination -> This creates: app/Providers/MathServiceProvider.php
+- Register the Service, Edit GreetingServiceProvider.php like this:
+````
+<?php
+
 namespace App\Providers;
-use Illuminate\Support\ServiceProvider;
-use App\Services\CustomMessage;
 
-class CustomServiceProvider extends ServiceProvider
+use Illuminate\Support\ServiceProvider;
+use App\Services\MathService;
+
+class MathServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
-        // Bind the CustomMessage class to the service container
-        $this->app->singleton(CustomMessage::class, function ($app) {
-            return new CustomMessage();
+        $this->app->singleton(MathService::class, function () {
+            return new MathService();
         });
     }
 
-    public function boot()
+    public function boot(): void
     {
-        // Code that should run after all services are registered (optional)
+        //
     }
 }
+
+
 ````
-- Register the Provider in Laravel In <b>bootstrap/app.php</b>, add the provider to the providers array
+- Register the Provider in Laravel In <b>bootstrap/providers.php</b>, add the provider to the providers array
 ````
-  $app->bind('greeting', function () {
-    return new GreetingService();
-    });
+   'providers' => [
+    // ...
+    App\Providers\MathServiceProvider::class,
+],
 
 ````
 - Use the Service In a controller or anywhere:
 ````
-use App\Services\CustomMessage;
+<?php
 
-class MessageController extends Controller
+namespace App\Http\Controllers;
+
+use App\Services\MathService;
+
+class MathController extends Controller
 {
-    public function send(CustomMessage $customMessage)
+    public function index(MathService $math)
     {
-        $customMessage->show('This is a custom message!');
-        return 'Message has been logged successfully!';
+    $sum = $math->add(10, 20);
+    $multiply = $math->multiply(10, 20);
+    $percent = $math->percentage(200, 50);
+    $root = $math->squareRoot(100);
+
+        $data = [
+            'sum'         => $sum,
+            'multiply'    => $multiply,
+            'percentage'  => round($percent, 2) . '%',
+            'square_root' => $root
+        ];
+        echo '<pre>'; print_r($data);
+        return response()->json($data);
     }
 }
 
 ````
-### Q4 - What is Eloquent in Laravel?
+
+- Create route in routes/web.php
+````
+use App\Http\Controllers\MathController;
+
+Route::get('/math', [MathController::class, 'index']);
+````
+
+### Q6 - What is Facards in Laravel?
+#### Ans -  Facades provide a "static" interface to classes that are available in the application's service container.
+
+
+### Q - What is Eloquent in Laravel?
 #### Ans - It is Laravel’s ORM that interacts with the database using models.
 - Explain
 ````
 $users = App\Models\User::where('active', 1)->get();
 ````
-## Q5 - Difference between get() and first()?
+## Q - Difference between get() and first()?
 #### Ans - get() returns all matching results and first() returns only the first match.
 - Explain
 ````
@@ -370,7 +500,7 @@ User::where('email', 'test@example.com')->get();    // Collection
 User::where('email', 'test@example.com')->first();  // Single Model
 ````
 
-## Q5 - What are Middleware?
+## Q - What are Middleware?
 #### Ans - A central place where Laravel bootstraps services.
 - Explain
 ````
